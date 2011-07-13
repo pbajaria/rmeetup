@@ -1,14 +1,12 @@
-require 'rubygems'
-require 'rake'
-require 'echoe'
+require 'jeweler'
 
-Echoe.new('rMeetup','1.0') do |p|
-  p.description = "A simple Ruby gem, providing access to the Meetup API"
-  p.url         = "https://github.com/Jberlinsky/rmeetup"
-  p.author      = "Jason Berlinsky"
-  p.email       = "jason@jasonberlinsky.com"
-  p.ignore_pattern  = ["tmp/*", "script/*"]
-  p.development_dependencies  = []
+Jeweler::Tasks.new do |gemspec|
+  gemspec.name        = 'rmeetup'
+  gemspec.summary     = 'A Ruby Gem for accessing the Meetup.com API'
+  gemspec.description = 'A Ruby Gem for accessing the Meetup.com API'
+  gemspec.email       = 'matt+rmeetup@puchlerz.com'
+  gemspec.homepage    = 'http://github.com/mattpuchlerz/rmeetup'
+  gemspec.authors     = [ 'Jared Pace', 'Matt Puchlerz' ]
 end
 
-Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
+Jeweler::GemcutterTasks.new
