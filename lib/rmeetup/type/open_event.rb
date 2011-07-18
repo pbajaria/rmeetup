@@ -25,7 +25,7 @@ module RMeetup
       
       # Special accessors that need typecasting or other parsing
       def id
-        self.event['id'].to_i
+        self.event['id']
       end
       def lat
         self.event['lat'].to_f
