@@ -37,10 +37,19 @@ module RMeetup
         self.event['rsvpcount'].to_i
       end
       def updated
-        DateTime.parse(self.event['updated'])
+        Time.at(self.event['updated'].to_i/1000)
+      end
+      def created
+        Time.at(self.event['created'].to_i/1000)
       end
       def time
-        DateTime.parse(self.event['time'])
+        Time.at(self.event['time'].to_i/1000)
+      end
+      def duration
+        self.event['duration'].to_i
+      end
+      def utc_offset
+        self.event['utc_offset'].to_i
       end
     end
   end
