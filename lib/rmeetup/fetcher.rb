@@ -8,6 +8,7 @@ require "rmeetup/fetcher/groups"
 require "rmeetup/fetcher/comments"
 require "rmeetup/fetcher/photos"
 require "rmeetup/fetcher/open_events"
+require "rmeetup/fetcher/profiles"
 
 module RMeetup
   module Fetcher
@@ -22,6 +23,8 @@ module RMeetup
                   Cities.new
                 when :members     
                   Members.new
+                when :profiles
+                    Profiles.new
                 when :rsvps       
                   Rsvps.new
                 when :events      
