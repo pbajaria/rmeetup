@@ -24,7 +24,7 @@ module RMeetup
       # Fetch and parse a response
       # based on a set of options.
       # Override this method to ensure
-      # neccessary options are passed
+      # necessary options are passed
       # for the request.
       def fetch(options = {})
         url = build_url(options)
@@ -77,7 +77,11 @@ module RMeetup
         end
         
         def get_response(url)
-          Net::HTTP.get_response(URI.parse(url)).body || raise(NoResponseError.new)
+          uri = URI.parse(url)
+          http = Net::HTTP.new(uri.host, uri.port)
+
+          # request for an 'utf-8' encoded response (http://www.meetup.com/meetup_api/#encodings)
+          http.request_get(uri.request_uri, { "Accept-Charset" => "utf-8" }).body || raise(NoResponseError.new)
         end
     end
   end
